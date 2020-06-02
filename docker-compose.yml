@@ -1,0 +1,50 @@
+version: '3.3'
+services:
+  nginx:
+    build:
+      context: ./docker
+      dockerfile: nginx.docker
+    volumes:
+      - ./logs/nginx:/var/log/nginx
+    ports:
+      - "80:80"
+      - "5000:5000"
+    depends_on:
+      - server
+      - client
+  client:
+    image: node:12
+    container_name: client
+    volumes:
+      - ./client:/var/www/viktoria.test/client
+    working_dir: /var/www/viktoria.test/client
+    tty: true
+    command: ["npm", "run", "dev"]
+    expose:
+      - "5000"
+  server:
+    restart: always
+    image: node:12
+    container_name: server
+    volumes:
+      - ./server:/var/www/viktoria.test/server
+    working_dir: /var/www/viktoria.test/server
+    tty: true
+    command: ["npm", "run", "dev"]
+    depends_on:
+      - db
+    expose:
+      - "3000"
+  db:
+    image: postgres:latest
+    restart: always
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: dgh
+      POSTGRES_PASSWORD: dgh
+      POSTGRES_DB: test
+    ports:
+      - "54321:5432"
+volumes:
+  postgres:

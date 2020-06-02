@@ -1,0 +1,12 @@
+{
+  "db": {
+    "host": "db",
+    "port": 5432,
+    "database": "test",
+    "user": "dgh",
+    "password": "dgh"
+  },
+  "pagination": {
+    "limit": 10
+  }
+}
