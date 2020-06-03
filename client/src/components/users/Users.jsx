@@ -18,10 +18,8 @@ class Users extends Component {
   }
 
   deleteUser(id) {
-    new Promise((resolve) => {
-      this.props.deleteUser(id)
-      resolve()
-    }).then(() => {
+    this.props.deleteUser(id)
+    .then(() => {
       this.props.getUsers(this.props.user.pagination.page)
     })
   }

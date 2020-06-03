@@ -89,7 +89,7 @@ export const getUser = id => dispatch => {
 
 // Delete User
 export const deleteUser = id => dispatch => {
-  axios
+  return axios
     .delete(`/api/users/${id}`)
     .then(res =>
       dispatch({
