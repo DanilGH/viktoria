@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export default (props) => {
 
@@ -10,7 +10,11 @@ export default (props) => {
   }
 
   return (
-    <button type="button" onClick={handleClick} className={props.className}>
+    <button
+      type="button"
+      onClick={handleClick}
+      className={props.className}
+    >
       {props.children}
     </button>
   );
