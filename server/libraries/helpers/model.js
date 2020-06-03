@@ -18,7 +18,7 @@ module.exports = (
 
   const findAll = (limit, offset) => knex.select(selectableProps)
     .from(tableName)
-    .orderBy('created_at', 'desc')
+    .orderBy('updated_at', 'desc')
     .offset(offset)
     .limit(limit)
     .timeout(timeout);
@@ -36,7 +36,9 @@ module.exports = (
 
   const findOne = filters => find(filters)
     .then(results => {
-      if (!Array.isArray(results)) return results
+      if(!Array.isArray(results)) {
+        return results
+      }
 
       return results[0]
     });
