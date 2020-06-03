@@ -118,6 +118,7 @@ class Users extends Component {
           </div>
           <div className="row">
             <div className="col">
+              //@todo Вынести в отдельный компонент
               <nav aria-label="Page navigation">
                 <ul className="pagination justify-content-md-center">
                   <li className={"page-item" + (prePage < 1 ? " disabled" : "")}>
@@ -135,7 +136,7 @@ class Users extends Component {
                       </span>
                     </li>
                   })}
-                  <li className={"page-item" + (nextPage >= countPages ? " disabled" : "")}>
+                  <li className={"page-item" + (nextPage > countPages ? " disabled" : "")}>
                       <span className="page-link"
                             aria-label="Next"
                             onClick={this.handlePageClick.bind(this, nextPage)}>
