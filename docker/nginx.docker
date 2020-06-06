@@ -1,5 +1,7 @@
 FROM nginx:1.10
 
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/hodger.conf /etc/nginx/conf.d/hodger.conf
+COPY nginx/nfbm.conf /etc/nginx/conf.d/nfbm.conf
 
 WORKDIR /var/www

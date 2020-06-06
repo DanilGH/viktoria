@@ -6,6 +6,7 @@ services:
       dockerfile: nginx.docker
     volumes:
       - ./logs/nginx:/var/log/nginx
+      - ../nfbm.ru:/var/www/nfbm.ru/public
     ports:
       - "80:80"
       - "5000:5000"
